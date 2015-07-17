@@ -1,0 +1,98 @@
+A very simple RCON client specifically made for ARK: Survival Evolved.
+
+With little modification, it should work fine with almost anything that uses
+Valve's RCON protocol. This was all based on my earlier work with Minecraft, and
+I only had to make minor adjustments.
+
+It will poll for new chat at regular intervals, and keep a list of online
+players updated to notify you when someone comes or goes.
+
+Anything you type in will be sent to the server, except two commands, ? and !:
+A single question mark will tell you when ark_rcon.pl last heard from the
+server.
+Prefix a line with ! as a shorthand for "serverchat".
+For example...
+!Good morning everyone
+...will actually send "serverchat Good morning everyone" to the server.
+
+If you run the script from the same box the server is on, and RCON is on Valve's
+default RCON port, you only have to specify the password.
+
+$ ./ark_rcon.pl --password WhateverYourAdminPasswordIs
+
+NOTE:  Your password will be visible to anyone that can list processes on that
+system. You might not want this.
+I will possibly add some kind of configuration file to work around this problem,
+or maybe allow you to specify the password interactively. Dunno. Suggestions and
+patches are very welcome.
+
+If you don't want to run it interactively, but just want to throw commands at
+the server, you can do it like so:
+$ ./ark_rcon.pl --password somePassword  --command saveworld
+You can, of course, issue as many --command arguments as you want.
+
+Full list of commandline switches, as presented by --help:
+
++- Connection ----------+----------------------------------------------------------------------------------+
+|                       |                                                                                  |
+|            --address  | The address to connect to.                                                       |
+|                       | Default is 127.0.0.1                                                             |
+|                       |                                                                                  |
+|               --port  | The port RCON is listening on.                                                   |
+|                       | Default is 27015                                                                 |
+|                       |                                                                                  |
+|           --password  | The server's administrator password.                                             |
+|                       | No default, must be specified.                                                   |
+|                       |                                                                                  |
++- Flow       ----------+----------------------------------------------------------------------------------+
+|                       |                                                                                  |
+|            --verbose  | Get more detaild information about the scripts inner workings.                   |
+|                       | Defaults to off.                                                                 |
+|                       |                                                                                  |
+|            --command  | Rather than running interactively, send this command and then disconnect.        |
+|                       | You can specify as many of these as you want.                                    |
+|                       | They are sent to the server in the order given.                                  |
+|                       | Defaults to nothing, meaning the script will run in interactive mode.            |
+|                       |                                                                                  |
+|              --quiet  | Suppress any output to the controlling terminal.                                 |
+|                       | Useful when running from a crontab, for example.                                 |
+|                       | Logging to file is *not* suppressed.                                             |
+|                       | Only makes sense with one or more --command instructions.                        |
+|                       |                                                                                  |
+|               --help  | You're looking at it.                                                            |
+|                       |                                                                                  |
++- Logging    ----------+----------------------------------------------------------------------------------+
+|                       |                                                                                  |
+|           --log-file  | Path to where the script will log, if enabled.                                   |
+|                       | Defaults to /home/ark/ark_rcon.log                                               |
+|                       |                                                                                  |
+|        --log-enabled  | Enables logging to the specified file.                                           |
+|                       | Defaults to disabled.                                                            |
+|                       |                                                                                  |
+|        --log-verbose  | Like --verbose, but only in the log.                                             |
+|                       | Implies --log-enabled                                                            |
+|                       | Defaults to disabled.                                                            |
+|                       |                                                                                  |
+|        --log-clobber  | Overwrite, rather than append to, the given log file.                            |
+|                       | Does nothing unless logging is enabled                                           |
+|                       | Defaults to disabled, meaning any logging will be appended to the file.          |
+|                       |                                                                                  |
++-----------------------+----------------------------------------------------------------------------------+
+
+Requires perl 5.12 or higher, and assumes Linux.
+Not tested on any other operating system.
+
+perl requirements:
+POE
+POE::Wheel::ReadLine
+POE::Wheel::ReadWrite
+POE::Filter::Stream
+POE::Filter::Line
+IO::Socket::INET
+IO::Socket
+Getopt::Long
+Time::HiRes
+
+DO NOT LOOK AT THE SOURCE!
+When you stare into the abyss, sometimes it stares back!
+
