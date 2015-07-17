@@ -8,9 +8,12 @@ It will poll for new chat at regular intervals, and keep a list of online
 players updated to notify you when someone comes or goes.
 
 Anything you type in will be sent to the server, except two commands, ? and !:
+
 A single question mark will tell you when ark_rcon.pl last heard from the
-server.
-Prefix a line with ! as a shorthand for "serverchat".
+server. It will also list the players currently online *without* asking the
+server, along with their Steam IDs.
+
+Prefix a line with ! as a shorthand for "serverchat ".
 For example...
 !Good morning everyone
 ...will actually send "serverchat Good morning everyone" to the server.
