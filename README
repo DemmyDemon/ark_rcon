@@ -33,51 +33,61 @@ You can, of course, issue as many --command arguments as you want.
 
 Full list of commandline switches, as presented by --help:
 
-+- Connection ----------+----------------------------------------------------------------------------------+
-|                       |                                                                                  |
-|            --address  | The address to connect to.                                                       |
-|                       | Default is 127.0.0.1                                                             |
-|                       |                                                                                  |
-|               --port  | The port RCON is listening on.                                                   |
-|                       | Default is 27015                                                                 |
-|                       |                                                                                  |
-|           --password  | The server's administrator password.                                             |
-|                       | No default, must be specified.                                                   |
-|                       |                                                                                  |
-+- Flow       ----------+----------------------------------------------------------------------------------+
-|                       |                                                                                  |
-|            --verbose  | Get more detaild information about the scripts inner workings.                   |
-|                       | Defaults to off.                                                                 |
-|                       |                                                                                  |
-|            --command  | Rather than running interactively, send this command and then disconnect.        |
-|                       | You can specify as many of these as you want.                                    |
-|                       | They are sent to the server in the order given.                                  |
-|                       | Defaults to nothing, meaning the script will run in interactive mode.            |
-|                       |                                                                                  |
-|              --quiet  | Suppress any output to the controlling terminal.                                 |
-|                       | Useful when running from a crontab, for example.                                 |
-|                       | Logging to file is *not* suppressed.                                             |
-|                       | Only makes sense with one or more --command instructions.                        |
-|                       |                                                                                  |
-|               --help  | You're looking at it.                                                            |
-|                       |                                                                                  |
-+- Logging    ----------+----------------------------------------------------------------------------------+
-|                       |                                                                                  |
-|           --log-file  | Path to where the script will log, if enabled.                                   |
-|                       | Defaults to /home/ark/ark_rcon.log                                               |
-|                       |                                                                                  |
-|        --log-enabled  | Enables logging to the specified file.                                           |
-|                       | Defaults to disabled.                                                            |
-|                       |                                                                                  |
-|        --log-verbose  | Like --verbose, but only in the log.                                             |
-|                       | Implies --log-enabled                                                            |
-|                       | Defaults to disabled.                                                            |
-|                       |                                                                                  |
-|        --log-clobber  | Overwrite, rather than append to, the given log file.                            |
-|                       | Does nothing unless logging is enabled                                           |
-|                       | Defaults to disabled, meaning any logging will be appended to the file.          |
-|                       |                                                                                  |
-+-----------------------+----------------------------------------------------------------------------------+
+Connection
+
+--address
+    The address to connect to.
+    Default is 127.0.0.1
+
+--port
+    The port RCON is listening on.
+    Default is 27015
+
+--password
+    The server's administrator password.
+    No default, must be specified.
+
+Flow
+
+--verbose
+    Get more detaild information about the scripts inner workings.
+    Defaults to off.
+
+--command
+    Rather than running interactively, send this command and then disconnect.
+    You can specify as many of these as you want.
+    They are sent to the server in the order given.
+    Defaults to nothing, meaning the script will run in interactive mode.
+
+--quiet
+    Suppress any output to the controlling terminal.
+    Useful when running from a crontab, for example.
+    Logging to file is *not* suppressed.
+    Only makes sense with one or more --command instructions.
+
+--help
+    An absolutely frightfully tabulated version of this text!
+
+Logging
+
+--log-file
+    Path to where the script will log, if enabled.
+    Defaults to /home/ark/ark_rcon.log
+
+--log-enabled
+    Enables logging to the specified file.
+    Defaults to disabled.
+
+--log-verbose
+    Like --verbose, but only in the log.
+    Implies --log-enabled
+    Defaults to disabled.
+
+--log-clobber
+    Overwrite, rather than append to, the given log file.
+    Does nothing unless logging is enabled
+    Defaults to disabled, meaning any logging will be appended to the file.
+
 
 Requires perl 5.12 or higher, and assumes Linux.
 Not tested on any other operating system.
